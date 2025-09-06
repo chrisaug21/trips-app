@@ -1,6 +1,10 @@
 [build]
+  base = "nextjs-app"
   command = "npm run build"
   publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 # Configure secrets scanning to ignore expected environment variables
 [build.environment]
