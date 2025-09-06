@@ -1,5 +1,8 @@
 import { supabaseAdmin } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export default async function DbTestPage() {
   try {
     // Simple select to get all trips

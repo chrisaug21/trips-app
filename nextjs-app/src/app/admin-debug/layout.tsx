@@ -1,6 +1,9 @@
 import { getServerSessionDebug } from '@/lib/auth-debug'
 import { LogoutButton } from '@/components/logout-button'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export default async function AdminDebugLayout({
   children,
 }: {

@@ -9,7 +9,7 @@ export default function DebugEnvPage() {
     setEnvVars({
       supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
       supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? 'Set' : 'Not set',
-      adminEmail: process.env.ADMIN_EMAIL,
+      // Note: ADMIN_EMAIL is server-only and not available on client
     })
   }, [])
 
@@ -23,7 +23,7 @@ export default function DebugEnvPage() {
           <div className="bg-gray-100 p-4 rounded">
             <p><strong>NEXT_PUBLIC_SUPABASE_URL:</strong> {envVars.supabaseUrl || 'Not set'}</p>
             <p><strong>NEXT_PUBLIC_SUPABASE_ANON_KEY:</strong> {envVars.supabaseAnonKey || 'Not set'}</p>
-            <p><strong>ADMIN_EMAIL:</strong> {envVars.adminEmail || 'Not set (server-only)'}</p>
+            <p><strong>ADMIN_EMAIL:</strong> Not available (server-only)</p>
           </div>
         </div>
 

@@ -1,5 +1,8 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server'
 
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export default async function DebugPage() {
   try {
     const supabase = await createServerSupabaseClient()
