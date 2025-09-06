@@ -1,4 +1,4 @@
-export const runtime = 'nodejs'
+'use client'
 
 import { createClient } from '@supabase/supabase-js'
 
@@ -15,19 +15,6 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   }
 })
 
-// Server-side client with service role for admin operations (only available server-side)
-export const supabaseAdmin = typeof window === 'undefined' 
-  ? createClient(
-      supabaseUrl,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      {
-        auth: {
-          autoRefreshToken: false,
-          persistSession: false
-        }
-      }
-    )
-  : null
 
 // Types for better type safety
 export type Database = {

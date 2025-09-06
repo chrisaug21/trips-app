@@ -1,3 +1,5 @@
+'use client'
+
 // Browser/client only — put inside 'use client' components
 import { createClient } from '@supabase/supabase-js'
 
