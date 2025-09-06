@@ -1,6 +1,5 @@
 [build]
-  base = "nextjs-app" 
-  command = "npm run build"
+  command = "cd nextjs-app && npm run build"
   publish = "nextjs-app/.next"
 
 # Configure secrets scanning to ignore expected environment variables
