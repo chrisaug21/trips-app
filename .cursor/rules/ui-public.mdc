@@ -1,0 +1,28 @@
+---
+description: Public site UI rules (Tailwind + DaisyUI)
+alwaysApply: true
+---
+
+# Design System
+- Use **DaisyUI** components for: navbar, menus, dropdowns, tabs, cards, breadcrumbs, buttons, alerts.
+- Keep custom CSS minimal; prefer DaisyUI classes and small Tailwind utilities.
+- Fonts: **Nunito** (headings), **Lato** (body) via <link> in root layout.
+- Theme via `tailwind.config.ts` (DaisyUI theme): set `primary`, `secondary`, `accent`, `neutral`, `base-100`, `info`, `success`, `warning`, `error`.
+
+# Page Composition
+- **Homepage** `/`: Grid of trip cards grouped by Upcoming / Current / Past (by dates).
+- **Trip page** `/trips/[slug]`:
+  - Hero (title, meta), summary card.
+  - **Leaflet map** with pins for blocks that have coords.
+  - **Tabs**: Morning / Afternoon / Evening; **Alternates** as accordion/list beneath tabs.
+  - **Prev/Next** navigation bar at bottom.
+
+# Accessibility & Responsiveness
+- Works at **390px**, **768px**, and desktop. Tap targets ≥ **44px**.
+- Maintain WCAG **AA** color contrast.
+- Prefer semantic HTML and keyboard-friendly components (DaisyUI already helps).
+
+# Do/Don’t
+- **Do**: Use DaisyUI primitives before inventing components.
+- **Do**: Centralize theme tokens; avoid per-component hardcoded colors.
+- **Don’t**: Introduce heavy CSS resets or external UI frameworks on public routes.

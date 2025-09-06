@@ -1,0 +1,20 @@
+---
+description: Draft → Preview → Publish workflow
+alwaysApply: true
+---
+
+# States
+- **draft**: editable in admin; visible via preview mode.
+- **published**: visitor-visible; read-only in public.
+
+# Publish Action
+- Set `status=published`.
+- Write a snapshot into `trip_versions` (include model + prompt_version).
+- Trigger **ISR revalidate** for: `/` (homepage) and `/trips/[slug]` only.
+
+# Preview Mode
+- From `/admin/trips/[id]`, “Preview as visitor” sets cookies and routes to public page showing **draft** content.
+- Clear “Exit preview”.
+
+# Rollback
+- Use `trip_versions` to view/restore snapshots into a new draft.

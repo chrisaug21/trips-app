@@ -1,0 +1,6 @@
+---
+description: Mission and vision for this project
+globs:
+alwaysApply: true
+---
+Build a personal trip planner app that helps an admin (me) plan trips faster with AI, then generates public trip pages that I can use before, during and after the trip and shares with others.

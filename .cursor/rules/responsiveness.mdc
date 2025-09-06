@@ -1,0 +1,20 @@
+---
+description: Mobile-first responsiveness and accessibility
+alwaysApply: true
+---
+
+# Breakpoints & Layout
+- Mobile-first. Validate at **390px**, **768px**, and desktop.
+- Common breakpoints: **480px**, **768px**, **1024px**.
+- Use responsive grids for cards and content sections.
+
+# Tap Targets & Contrast
+- Interactive elements ≥ **44px** height on mobile.
+- Maintain WCAG **AA** contrast for text and interactive states.
+
+# Navigation
+- Navbar must collapse or overflow gracefully on small screens.
+- Tabs/menus must be usable with keyboard and touch.
+
+# Maps & Media
+- Map and images are fluid width; reasonable heights for mobile (~300px) and desktop (~480px) unless content requires otherwise.

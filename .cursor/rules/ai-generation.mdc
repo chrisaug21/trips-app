@@ -1,0 +1,24 @@
+---
+description: AI generation contract and validation
+alwaysApply: true
+---
+
+# Goal
+Turn an admin brief (geos, dates/season, duration, interests, constraints) into a **validated itinerary JSON** saved as a draft.
+
+# Contract
+- Use **OpenAI Structured Outputs (JSON Schema)** with `strict: true` to force valid JSON.
+- Validate with **Zod**; attempt one **repair** pass with summarized Zod errors.
+- If still invalid, return a friendly error suggesting smaller scope or day-by-day regeneration.
+
+# Output Shape (conceptual)
+- Trip fields: title, summary, duration_days, trip_geos, interests, sections.
+- Days: index, date_hint, city, theme; arrays for morning/afternoon/evening; optional alternates; day_sections.
+- POI fields: name, why, optional lat/lng, link, notes.
+
+# Enrichment (optional)
+- Server-side POI enrichment (lat/lng, official link). Fail gracefully if unavailable.
+
+# Safety & Cost
+- Cap tokens (full trip vs per-day regenerate).
+- Log token counts and first 500 chars of AI response server-side only.

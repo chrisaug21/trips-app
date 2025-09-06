@@ -1,0 +1,14 @@
+---
+description: Canonical reference docs (always-on pointers)
+alwaysApply: true
+---
+
+# Canonical Docs (read these when in doubt)
+- `/docs/VISION.md` — product vision, desired user experience and UX values
+- `/docs/ARCH_DECISIONS.md` — stack & UI choices (Public = Tailwind + DaisyUI; Admin = Tailwind + shadcn/ui).
+- `/docs/PROMPT_TASKS.md` — step-by-step tasks to follow in Cursor.
+- `/docs/REQUIREMENTS.md` — product scope, UX, acceptance criteria.
+- `/docs/ABOUT_CHRIS.md` — how to respond to and work with me as the app creator and admin
+
+# Notes
+- When generating code or plans, **cite which doc sections** you followed and explain deviations briefly.

@@ -1,0 +1,16 @@
+---
+description: Admin UI rules (Tailwind + shadcn/ui)
+alwaysApply: true
+---
+
+# Components & Patterns
+- Use **shadcn/ui** for forms, dialogs, tabs, toasts, dropdowns.
+- Tabs for `/admin/trips/[id]`: Overview, Geographies, Days (with Accommodation), Sections, Versions.
+- **Inline edits** with server actions (optimistic updates).
+- Provide clear **toasts** and inline **error** states for all actions.
+
+# UX Principles
+- Short, forgiving flows (wizard for new trip).
+- Clear Draft vs Published state.
+- Dangerous actions (delete/overwrite) require explicit confirm.
+- Show **AI provenance** (model, prompt_version) where relevant.

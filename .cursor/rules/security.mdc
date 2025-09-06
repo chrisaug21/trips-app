@@ -1,0 +1,17 @@
+---
+description: Security & secrets handling
+alwaysApply: true
+---
+
+# Secrets & Auth
+- **Never** expose secrets (OpenAI key, Supabase service role) to the client.
+- Keep secrets in **Netlify environment variables**.
+- Use **Supabase Auth**; only allow Chris’s email to access `/admin/*`.
+
+# Database Access
+- **RLS**: public read for published trips; writes require admin.
+- All write operations run via server actions/route handlers.
+
+# Abuse Controls
+- Rate-limit AI generation endpoints (admin-only).
+- Log server errors with minimal PII; no verbose AI content in client logs.

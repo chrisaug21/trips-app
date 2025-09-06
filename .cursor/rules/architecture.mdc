@@ -1,0 +1,26 @@
+---
+description: Architecture and stack decisions
+alwaysApply: true
+---
+
+# Stack
+- Framework: **Next.js (App Router) + TypeScript** on Netlify’s Next runtime.
+- Public UI: **Tailwind CSS + DaisyUI** (default preflight).
+- Admin UI: **Tailwind + shadcn/ui**.
+- Data/Auth: **Supabase** (Postgres + Auth + Storage).
+- Validation: **Zod** at all boundaries (forms, API, AI).
+- AI: **OpenAI** with Structured Outputs (JSON Schema).
+- Maps: **Leaflet + OpenStreetMap** tiles (no token).
+
+# Routing
+- Public routes: `/` (cards) and `/trips/[slug]` (trip page).
+- Admin routes: `/admin`, `/admin/trips`, `/admin/trips/new`, `/admin/trips/[id]`.
+- APIs: `/api/trips`, `/api/trips/[id]/generate`, `/api/trips/[id]/publish`.
+
+# Rendering & Publish
+- Public: SSG/ISR; revalidate only changed routes on publish.
+- Admin: server actions/route handlers; no secrets in client.
+
+# Rationale
+- DaisyUI gives accessible, responsive components (navbar, tabs, cards, dropdowns) that are easy to assemble with AI—ideal for a non-coder.
+- shadcn/ui fits form-heavy admin flows.
