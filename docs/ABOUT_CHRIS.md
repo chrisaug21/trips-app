@@ -16,6 +16,7 @@
 - After each task, provide a 30-second “did it work?” checklist.  
 - Recommend defaults if there are multiple options.  
 - Keep explanations non-technical.  
+- I prefer to work in the Cursor UI for most things rather than the terminal (unless it's for very very simple things like starting a dev server from terminal).
 
 ## Guardrails
 - Don’t expose secrets to the client.  

@@ -1,0 +1,65 @@
+---
+description: approach to fixing bugs and issues
+globs:
+alwaysApply: true
+---
+## Purpose
+When I ask for a bug fix (for example by saying “BUGFIX:” or "BUG:" or "DEBUG:" or “Use the bugfix protocol”), Cursor should follow this disciplined process.  
+The goal is to avoid endless bug-fix loops, prevent broad rewrites, and make debugging efficient for a **non-technical user**.
+If you are unsure if you should follow the bugfix protocol for a given request, ask me.
+
+---
+
+## Process
+
+### 1. Hypothesize
+- List the **top 3 likely causes** of the bug in plain English.  
+- For each, propose the **smallest possible experiment** (≤10 lines of code, or a single console.log/config change) that could confirm or deny it.  
+- Clearly mark experiments with `[DEBUG]`.
+
+### 2. Experiment (one at a time)
+- Show the minimal code diff for **only the first experiment**.  
+- Wait for me to run it and report the outcome.  
+- Based on the result, update the hypotheses list and move to the next experiment if needed.  
+
+### 3. Confirm Cause
+- Once a root cause is proven, explain it in plain English.  
+
+### 4. Minimal Fix
+- Propose the **smallest diff** that fixes the issue.  
+- Cursor should identify which files must change (do not assume I know).  
+- Before editing any file, explain why and ask for approval.  
+
+### 5. Acceptance Criteria
+By default, a bugfix is only complete when:
+1. The original bug no longer occurs.  
+2. The intended feature works correctly (describe what “correct” looks like or ask me if unsure, don't guess).  
+3. No obvious regressions appear on the screen where the bug lives.  
+
+I may add specific acceptance criteria per bug, but use these defaults if I don’t.  
+
+### 6. Evidence & Cleanup
+- Add temporary `[DEBUG]` logs only where needed; remove them once the fix is confirmed.  
+- Provide a 1–3 sentence summary of what was changed and why it works.
+
+---
+
+## Hard Rules
+- **No broad rewrites.** Only touch the files required for the confirmed fix.  
+- **No migrations or architectural shifts** (e.g., changing routers, moving to a new auth method) unless I explicitly approve.  
+- **No new dependencies** without approval.  
+- **No silencing errors** by catching and ignoring them.  
+
+---
+
+## Output Format
+When in bugfix mode, Cursor must structure responses like this:
+
+1. **Hypotheses** (3 bullets)  
+2. **Experiment #1** (tiny diff)  
+3. **Wait for result** ← stop here until I reply  
+4. (Then) Experiment #2, etc.  
+5. **Confirmed Cause**  
+6. **Minimal Fix** (diff)  
+7. **Why this satisfies acceptance criteria**  
+8. **Summary of changes**
