@@ -2,7 +2,7 @@
 
 ---
 
-### Task 0 — Project scaffold (Next.js on Netlify)
+### Task 0 — Project scaffold (Next.js on Netlify) - COMPLETE
 **Prompt:**  
 “Create a Next.js (App Router, TypeScript) project configured for Netlify’s Next runtime. Add Tailwind CSS and **DaisyUI** for the public UI, and add **shadcn/ui** for the admin. Set up base routes: `/` (placeholder), `/trips/[slug]` (placeholder), `/admin` (placeholder). Add a README with local + Netlify deploy steps. Do not include any API keys.”
 
@@ -10,7 +10,7 @@
 
 ---
 
-### Task 1 — Supabase setup & types
+### Task 1 — Supabase setup & types - COMPLETE
 **Prompt:**  
 “Add Supabase client libs and create `lib/supabase.ts` with a server client + client anon client. Define `.env.example` placeholders for `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and server-only service key. Add `sql/schema.sql` to create `trips`, `trip_interests`, `days`, `day_blocks`, `trip_versions`, plus enums/indexes. Provide SQL + a short RLS plan (public read for published; writes admin-only). Do not execute; output file + migration steps.”
 
@@ -18,13 +18,20 @@
 
 ---
 
-### Task 2 — Auth (admin-only)
-**Prompt:**  
+### Task 2 — Auth (admin-only) - COMPLETE
+**Prompt:**   -
 “Implement Supabase Auth (email magic link or password). Protect `/admin/*` via a server layout session check. Add login + logout. Only my email (from env) is admin; redirect others away.”
 
 **Done when:** Only my email can access `/admin`.
 
 ---
+
+### Task 2.5: Deploy to Netlify
+
+Setup Netlify and Namecheap (CNAME) and deploy code to the web such that the app can be accessed via the internet at trips-app.chrisaug.com
+
+**Done when:** We achieved a successful build and deploy to web and can verify login works on prod
+
 
 ### Task 3 — Admin list & create wizard (no AI yet)
 **Prompt:**  
