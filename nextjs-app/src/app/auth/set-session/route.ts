@@ -1,7 +1,7 @@
 export const runtime = 'nodejs'
 
 import { NextResponse, type NextRequest } from 'next/server'
-import { getServerSupabase } from '@/lib/supabase/server'
+import { createServerClient } from '@supabase/ssr'
 
 export async function POST(request: NextRequest) {
   try {
@@ -11,9 +11,29 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Missing tokens' }, { status: 400 })
     }
 
+    // Prepare a response object that we will attach cookies to
     let response = NextResponse.json({ ok: true })
 
-    const supabase = getServerSupabase()
+    // Create a cookie-aware Supabase client for route handlers
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll()
+          },
+          setAll(cookiesToSet) {
+            // Ensure cookies are written to the outgoing response
+            // Recreate the response so we can set multiple cookies with proper options
+            response = NextResponse.json({ ok: true })
+            cookiesToSet.forEach(({ name, value, options }) =>
+              response.cookies.set(name, value, options)
+            )
+          },
+        },
+      }
+    )
 
     const { error } = await supabase.auth.setSession({ access_token, refresh_token })
     if (error) {

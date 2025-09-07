@@ -29,6 +29,7 @@ export default function CallbackClient() {
         try {
           await fetch('/auth/set-session', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               access_token: data.session.access_token,
