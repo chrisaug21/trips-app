@@ -1,10 +1,11 @@
 # About Chris (for engineers / AI assistants)
 
 ## Who I am
-- Product Director (non-technical) who builds real apps using AI coding tools.  
+- Software Product Managr / Leader by trade who builds real apps using AI coding tools.  
 - I value **clarity, simplicity, and speed** — I learn by shipping.  
-- I don’t know how to code traditionally, but I use AI to “vibe code” (build apps without deep technical knowledge).  
-- I understand product strategy, UX, and workflows. I need engineering details translated into plain English.  
+- I am non-technical and need things explained to me in plain English while preenting me with practical options on how to resolve. 
+- I don’t know how to read or write code traditionally and I am not an engineer, but I use AI to “vibe code” (build apps without deep technical knowledge).  
+- I understand product strategy, UX, and workflows. I have some basic understanding of tech stacks conceptually and am comfortable with making tradeoffs. But I need engineering details translated into plain English.  
 
 ## Project Goals
 - I have a hard-coded static trip site today at https://trips.chrisaug.com. I want to build a v2 of that site (at trips-app.chrisaug.com) that is a real, working app that helps me plan and refine AI-generated itineraries that I can then share publicly for me and others to view before, during and after trips.

@@ -8,6 +8,8 @@
 - **Validation**: Zod at all boundaries (forms, API, AI output)
 - **Maps**: Leaflet + OpenStreetMap tiles
 - **Rendering**: Static/ISR for public pages; server actions/route handlers for admin + AI
+- **Hostings**: Netlify
+- **Domains**: Namecheap (trips-app.chrisaug.com)
 
 ## 2) Public UI — decision
 **Adopt Tailwind CSS + DaisyUI for the public site immediately.**  
@@ -65,3 +67,43 @@
 - Fonts: **Nunito** (headings) and **Lato** (body).
 - Keep spacing/typography scale consistent across public + admin where practical.
 
+## 10) Versions
+- Next.js: 15.x (App Router), React 19.x
+- Tailwind CSS: v4
+- Public UI: DaisyUI
+- Admin UI: Tailwind + shadcn/ui
+- Supabase (Postgres + Auth + Storage)
+- Zod — planned (schema validation everywhere; to be added as a dependency)
+- Maps: Leaflet + OpenStreetMap
+- AI: OpenAI with Structured Outputs (JSON Schema)
+
+## 11) Project structure
+- Canonical app directory: `nextjs-app/`
+- Note: there is a legacy `src/` at the repo root; do not ship from root. All new work targets `nextjs-app/`. (TODO: archive or remove legacy root `src/` when convenient.)
+
+## 12) Auth & access control
+- Auth: Supabase Auth via SSR helpers and middleware.
+- Admin access: restrict `/admin/*` to Chris’s account only. (TODO: enforce explicit email allowlist in server-side checks.)
+- RLS: published content is publicly readable; all writes require admin.
+- Middleware: runs on Node runtime (not Edge) and syncs Supabase cookies; broad matcher excludes static assets and auth callback.
+
+## 13) Build & deploy
+- Host: Netlify with the official Next.js runtime plugin.
+- Rendering: Public pages use SSG/ISR; admin uses route handlers/server actions.
+- Publish action: set `status=published`, write snapshot to `trip_versions` (include model + prompt_version), then revalidate only `/` and `/trips/[slug]`.
+- Env vars: stored in Netlify; no secrets in client bundles.
+
+## 14) Observability, rate limiting, safety
+- Server logs: minimal; record token counts and first 500 chars of AI response. (Feature-flagged.)
+- Rate limiting: apply to admin-only AI generation endpoints. (TODO: document exact limits once implemented.)
+
+## 15) Developer experience (temporary flags)
+- Lint: `eslint.ignoreDuringBuilds = true` (TEMP)
+- TypeScript: `typescript.ignoreBuildErrors = true` (TEMP)
+- Action: remove these once the codebase compiles cleanly.
+
+## 16) Styling notes
+- Tailwind v4 is the baseline. DaisyUI adoption is a decision but not yet implemented.
+- Admin components: shadcn/ui with shared spacing/typography where practical.
+- Fonts: Nunito (headings), Lato (body) via link in root layout.
+- Theming: keep tokens centralized; avoid per-component hardcoded colors. (TODO: add DaisyUI theme config after install.)

@@ -35,7 +35,11 @@ Setup Netlify and Namecheap (CNAME) and deploy code to the web such that the app
 
 ### Task 3 — Admin list & create wizard (no AI yet)
 **Prompt:**  
-“Build `/admin/trips` listing trips (status chips, actions Edit/Publish-if-draft). Implement `/admin/trips/new` multi-step form: basics (title optional), geographies (countries/regions/cities), dates/season, duration, interests (preset multi-select + custom chip add), constraints (free-form). On save, insert draft + route to `/admin/trips/[id]`.”
+“Implement an Admin interface to create/edit/delete trips, protect it with Supabase auth and RLS, wire the public site to published trips from the database, and provide a safe, development-only seed path that inserts a couple of example trips.
+
+Build `/admin/trips` listing trips (status chips, actions Edit/Publish-if-draft). Implement `/admin/trips/new` multi-step form: basics (title optional), geographies (countries/regions/cities), dates/season, duration, interests (preset multi-select + custom chip add), constraints (free-form). On save, insert draft + route to `/admin/trips/[id]`.”
+
+
 
 **Done when:** I can create a blank draft with brief fields stored.
 
@@ -104,7 +108,7 @@ Setup Netlify and Namecheap (CNAME) and deploy code to the web such that the app
 **Done when:** Many POIs show on the map without manual coordinate entry.
 
 ---
-
+    
 ### Task 10 — Error handling & polish
 **Prompt:**  
 “Add toasts and inline errors for admin actions. Add loading states. Log AI request/response sizes. Add an ‘AI provenance’ panel (model & prompt_version). Add a `trip_versions` modal to view/restore snapshots into a draft copy.”
