@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { getServerSession } from '@/lib/auth'
 import { LogoutButton } from '@/components/logout-button'
 import { redirect } from 'next/navigation'
